@@ -9,11 +9,9 @@ import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-
-  const port = process.env.BFF_PORT;
+  const port = process.env.CORE_PORT;
 
   if (!port) {
     Logger.error('Port is not provided');

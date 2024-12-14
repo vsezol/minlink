@@ -1,7 +1,7 @@
 {
-  "name": "bff",
+  "name": "core",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/bff/src",
+  "sourceRoot": "apps/core/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -9,34 +9,28 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
-        "args": [
-          "node-env=production"
-        ]
+        "args": ["node-env=production"]
       },
       "configurations": {
         "development": {
-          "args": [
-            "node-env=development"
-          ]
+          "args": ["node-env=development"]
         }
       }
     },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
-        "buildTarget": "bff:build",
+        "buildTarget": "core:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "bff:build:development"
+          "buildTarget": "core:build:development"
         },
         "production": {
-          "buildTarget": "bff:build:production"
+          "buildTarget": "core:build:production"
         }
       }
     }
