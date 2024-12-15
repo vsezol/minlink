@@ -20,7 +20,8 @@ export default function UrlShortener() {
       const data = await response.json();
 
       if (response.ok) {
-        setShortUrl(`http://localhost:4200/${data.shortUrl}`);
+        // eslint-disable-next-line no-restricted-globals
+        setShortUrl(`${location.origin}/${data.shortUrl}`);
         setIsCopied(false);
       } else {
         alert(data.message || 'Error creating short link');

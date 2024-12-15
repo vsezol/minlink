@@ -15,5 +15,6 @@ spec:
       containers:
         - name: nginx
           image: vsezol/minlink-client:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80

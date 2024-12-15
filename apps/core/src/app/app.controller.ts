@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Logger,
   NotFoundException,
   Param,
   Post,
@@ -16,6 +17,8 @@ export class AppController {
   async postShorten(
     @Body('longUrl') longUrl: string
   ): Promise<{ shortUrl: string }> {
+    Logger.log('REQUEST /shorten ' + longUrl);
+
     return {
       shortUrl: this.appService.shorten(longUrl),
     };
@@ -25,6 +28,8 @@ export class AppController {
   async resolve(
     @Param('shortId') shortId: string
   ): Promise<{ longUrl: string }> {
+    Logger.log('REQUEST resolve/:shortId ' + shortId);
+
     const longUrl = this.appService.resolve(shortId);
 
     if (!longUrl) {

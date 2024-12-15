@@ -15,5 +15,9 @@ spec:
       containers:
         - name: bff
           image: vsezol/minlink-bff
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: bff-config

@@ -40,9 +40,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "docker build -f apps/bff/Dockerfile . -t vsezol/minlink-bff",
-          "docker tag vsezol/minlink-bff vsezol/minlink-bff:latest",
-          "docker push vsezol/minlink-bff:latest"
+          "docker build -f apps/bff/Dockerfile . -t vsezol/minlink-bff && docker tag vsezol/minlink-bff vsezol/minlink-bff:latest && docker push vsezol/minlink-bff:latest"
         ]
       },
       "configurations": {

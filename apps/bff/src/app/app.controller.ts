@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Environment } from './environment';
 
@@ -14,6 +14,8 @@ export class AppController {
   async postShorten(
     @Body('longUrl') longUrl: string
   ): Promise<{ shortUrl: string }> {
+    Logger.log(`111 REQUEST ${this.coreApiUrl}/url/shorten`);
+
     const response = await fetch(`${this.coreApiUrl}/url/shorten`, {
       method: 'POST',
       body: JSON.stringify({ longUrl }),
@@ -22,7 +24,13 @@ export class AppController {
       },
     });
 
+    Logger.log(`111 RESPONSE FROM ${this.coreApiUrl}/url/shorten`);
+    Logger.log(JSON.stringify(response, null, 4));
+
     const data = await response.json();
+
+    Logger.log(`111 DATA FROM ${this.coreApiUrl}/url/shorten`);
+    Logger.log(JSON.stringify(data, null, 4));
 
     return data;
   }

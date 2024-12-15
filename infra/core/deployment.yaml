@@ -15,5 +15,6 @@ spec:
       containers:
         - name: core
           image: vsezol/minlink-core
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
