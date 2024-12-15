@@ -7,7 +7,6 @@ import { loadEnvironment } from './environment';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
       load: [loadEnvironment],
     }),
   ],

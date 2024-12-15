@@ -33,6 +33,22 @@
           "buildTarget": "core:build:production"
         }
       }
+    },
+    "docker": {
+      "defaultConfiguration": "production",
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker build -f apps/core/Dockerfile . -t vsezol/minlink-core",
+          "docker tag vsezol/minlink-core vsezol/minlink-core:latest",
+          "docker push vsezol/minlink-core:latest"
+        ]
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
     }
   }
 }

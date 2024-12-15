@@ -9,24 +9,18 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
-        "args": [
-          "node-env=production"
-        ]
+        "args": ["node-env=production"]
       },
       "configurations": {
         "development": {
-          "args": [
-            "node-env=development"
-          ]
+          "args": ["node-env=development"]
         }
       }
     },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "buildTarget": "bff:build",
         "runBuildTargetDependencies": false
@@ -38,6 +32,22 @@
         "production": {
           "buildTarget": "bff:build:production"
         }
+      }
+    },
+    "docker": {
+      "defaultConfiguration": "production",
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker build -f apps/bff/Dockerfile . -t vsezol/minlink-bff",
+          "docker tag vsezol/minlink-bff vsezol/minlink-bff:latest",
+          "docker push vsezol/minlink-bff:latest"
+        ]
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
       }
     }
   }

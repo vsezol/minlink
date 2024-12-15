@@ -13,7 +13,7 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 
-  const port = process.env.BFF_PORT;
+  const port = process.env.PORT;
 
   if (!port) {
     Logger.error('Port is not provided');

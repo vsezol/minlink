@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bff-service
+spec:
+  selector:
+    app: bff
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  # TODO change to NodePort or LoadBalancer
+  type: NodePort
