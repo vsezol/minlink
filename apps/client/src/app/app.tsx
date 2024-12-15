@@ -1,15 +1,16 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import UrlRedirect from './url-redirect';
-import UrlShortener from './url-shortener';
+import ViewerPage from '../pages/viewer-page';
+import ShortenerPage from '../pages/shortener-page';
+import { RoutePath } from '../shared/lib/router';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <UrlShortener />,
+    path: RoutePath.Shortener,
+    element: <ShortenerPage />,
   },
   {
-    path: ':shortId',
-    element: <UrlRedirect />,
+    path: RoutePath.Viewer,
+    element: <ViewerPage />,
   },
 ]);
 
