@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppController } from './app.controller';
 import { loadEnvironment } from './environment';
+import { UrlModule } from './features/url/url.module';
 
 @Module({
   imports: [
@@ -9,8 +9,7 @@ import { loadEnvironment } from './environment';
       isGlobal: true,
       load: [loadEnvironment],
     }),
+    UrlModule,
   ],
-  controllers: [AppController],
-  providers: [],
 })
 export class AppModule {}

@@ -1,15 +1,17 @@
 export interface PostUrlShortenResponse {
-  shortUrl: string;
+  shortId: string;
 }
 
 export interface GetUrlResolveResponse {
   longUrl: string;
 }
 
+const API_URL = `http://localhost:3000/api`;
+
 export const postUrlShorten = async (
   longUrl: string
 ): Promise<PostUrlShortenResponse> => {
-  const response = await fetch(`http://localhost:3000/api/url/shorten`, {
+  const response = await fetch(`${API_URL}/url/shorten`, {
     method: 'POST',
     body: JSON.stringify({ longUrl }),
     headers: {
@@ -23,21 +25,12 @@ export const postUrlShorten = async (
 export const getUrlResolve = async (
   shortId: string
 ): Promise<GetUrlResolveResponse> => {
-  return new Promise((res) =>
-    setTimeout(() => {
-      res({ longUrl: 'skmdksmdksmdmks' });
-    }, 2000)
-  );
-
-  const response = await fetch(
-    `http://localhost:3000/api/url/resolve/${shortId}`,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
+  const response = await fetch(`${API_URL}/url/resolve/${shortId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   return await response.json();
 };

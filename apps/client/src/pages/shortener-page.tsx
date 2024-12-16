@@ -18,7 +18,7 @@ export default function ShortenerPage() {
         try {
           const data = await postUrlShorten(longUrl);
           // eslint-disable-next-line no-restricted-globals
-          setShortUrl(`${location.origin}/${data.shortUrl}`);
+          setShortUrl(`${location.origin}/${data.shortId}`);
           setIsCopied(false);
           setIsError(false);
         } catch (error) {
