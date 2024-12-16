@@ -42,3 +42,5 @@ Thumbs.db
 .nx/workspace-data
 
 vite.config.*.timestamp*
+**/*/.terraform*
+**/*/terraform.tfstate*
