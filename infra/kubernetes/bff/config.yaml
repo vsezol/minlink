@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: bff-config
-data:
-  CORE_API_URL: http://core-service.default.svc.cluster.local:3001/api
